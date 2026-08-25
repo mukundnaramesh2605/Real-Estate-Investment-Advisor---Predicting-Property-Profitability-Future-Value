@@ -1,0 +1,24 @@
+artifact_path: /Users/mukundanramesh/projects/Real Estate Investment Advisor - Predicting
+  Property Profitability & Future Value/mlruns/0/models/m-e0cc619c103542918e97a1540e817728/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.11.15
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.15.1
+model_id: m-e0cc619c103542918e97a1540e817728
+model_size_bytes: 1754730
+model_uuid: m-e0cc619c103542918e97a1540e817728
+prompts: null
+run_id: 4ab47c4fefa14156a597242e60371ebc
+utc_time_created: '2026-08-25 05:10:48.910604'
