@@ -7,3 +7,4 @@ MLflow.ipynb
 mlflow.db
 /mlartifacts
 *.db
+/mlruns
