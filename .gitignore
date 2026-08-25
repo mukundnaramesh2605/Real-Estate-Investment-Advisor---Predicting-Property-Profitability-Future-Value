@@ -4,3 +4,6 @@ Real Estate Investment Advisor_ Predicting Property Profitability & Future Value
 /.ipynb_checkpoints
 MLflow.ipynb
 
+mlflow.db
+/mlartifacts
+*.db
