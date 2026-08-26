@@ -1,4 +1,4 @@
-artifact_path: mlflow-artifacts:/4/models/m-4392a42ba710461b8f55b6911d11e7ae/artifacts
+artifact_path: mlflow-artifacts:/5/models/m-864b9a75370046af93eb8f359d38afae/artifacts
 flavors:
   lightgbm:
     code: null
@@ -20,11 +20,11 @@ flavors:
     python_version: 3.11.15
 is_signature_from_type_hint: false
 mlflow_version: 3.15.1
-model_id: m-4392a42ba710461b8f55b6911d11e7ae
+model_id: m-864b9a75370046af93eb8f359d38afae
 model_size_bytes: 654378
-model_uuid: m-4392a42ba710461b8f55b6911d11e7ae
+model_uuid: m-864b9a75370046af93eb8f359d38afae
 prompts: null
-run_id: bd067c8f205f4ab4a2e04e12b395c612
+run_id: 9192efb572434ab28f97c377826e107f
 signature:
   inputs: '[{"type": "double", "name": "BHK", "required": true}, {"type": "double",
     "name": "Size_in_SqFt", "required": true}, {"type": "double", "name": "Price_in_Lakhs",
@@ -82,4 +82,4 @@ signature:
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-08-26 07:05:37.238066'
+utc_time_created: '2026-08-26 09:37:05.763623'

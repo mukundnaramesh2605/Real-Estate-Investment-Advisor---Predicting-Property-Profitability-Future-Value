@@ -1,4 +1,4 @@
-artifact_path: mlflow-artifacts:/5/models/m-03ece1ba70c04e4a84591a946b47133f/artifacts
+artifact_path: mlflow-artifacts:/5/models/m-7b17d78a93134661b7f97b54e1b7bee2/artifacts
 flavors:
   lightgbm:
     code: null
@@ -7,10 +7,10 @@ flavors:
     model_class: lightgbm.sklearn.LGBMClassifier
     serialization_format: skops
     skops_trusted_types:
-    - lightgbm.sklearn.LGBMClassifier
     - lightgbm.basic.Booster
-    - collections.OrderedDict
+    - lightgbm.sklearn.LGBMClassifier
     - lightgbm.sklearn.LGBMRegressor
+    - collections.OrderedDict
   python_function:
     data: model.skops
     env:
@@ -20,11 +20,11 @@ flavors:
     python_version: 3.11.15
 is_signature_from_type_hint: false
 mlflow_version: 3.15.1
-model_id: m-03ece1ba70c04e4a84591a946b47133f
-model_size_bytes: 819490
-model_uuid: m-03ece1ba70c04e4a84591a946b47133f
+model_id: m-7b17d78a93134661b7f97b54e1b7bee2
+model_size_bytes: 819096
+model_uuid: m-7b17d78a93134661b7f97b54e1b7bee2
 prompts: null
-run_id: e56c05a0b2004021895bc89e911ce255
+run_id: a671ac7edee942c7a25c7be1c4a87e0e
 signature:
   inputs: '[{"type": "double", "name": "Size_in_SqFt", "required": true}, {"type":
     "double", "name": "Price_in_Lakhs", "required": true}, {"type": "double", "name":
@@ -75,9 +75,8 @@ signature:
     "double", "name": "Furnished_Status_Unfurnished", "required": true}, {"type":
     "double", "name": "Owner_Type_Broker", "required": true}, {"type": "double", "name":
     "Owner_Type_Builder", "required": true}, {"type": "double", "name": "Owner_Type_Owner",
-    "required": true}, {"type": "double", "name": "size_per_floor", "required": true},
-    {"type": "double", "name": "school_hospital_sum", "required": true}]'
+    "required": true}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-08-26 06:38:33.047038'
+utc_time_created: '2026-08-26 09:40:15.921687'
