@@ -8,3 +8,4 @@ mlflow.db
 /mlartifacts
 *.db
 /mlruns
+mlflow.db
