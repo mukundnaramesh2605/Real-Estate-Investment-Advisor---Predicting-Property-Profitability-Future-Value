@@ -130,3 +130,31 @@ fig.update_layout(
     legend_title_text='Locality',
 )
 st.plotly_chart(fig, use_container_width=True, key='chart_8')
+
+
+st.divider()
+title_9 = 'Correlation of Original Numeric Features'
+st.subheader(title_9)
+exclude = ['Growth_Rate_Annual', 'Future_Price_5Y', 'Good_Investment']
+num = df.select_dtypes(include='number').drop(columns=exclude, errors='ignore')
+corr = num.corr()
+fig = px.imshow(corr,text_auto='.2f',color_continuous_scale='RdBu_r',zmin=-1,zmax=1,aspect='auto')
+fig.update_layout(
+    title_text=title_9, # title of plot
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_9')
+
+
+st.divider()
+title_10 = 'Price per SqFt by Number of Nearby Schools'
+st.subheader(title_10)
+fig = px.box(data_frame=df,x='Nearby_Schools',y='Price_per_SqFt',color='Nearby_Schools',color_discrete_sequence=px.colors.sequential.Viridis)
+fig.update_layout(
+    title_text=title_10, # title of plot
+    xaxis_title_text='Number of Nearby Schools', # xaxis label
+    yaxis_title_text='Price per SqFt', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_10')
+
+
