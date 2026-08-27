@@ -11,4 +11,9 @@ st.title("💻 Predictions")
 dr = dataset_reader()
 
 city = dr.get_cities()
-st.write(city)
+option = st.selectbox(
+    "Choose a city", 
+    city, 
+    index=None, 
+    placeholder="Select City..."
+)
