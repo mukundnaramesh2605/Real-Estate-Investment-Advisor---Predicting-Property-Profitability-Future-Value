@@ -229,3 +229,29 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_15')
 
 
+st.divider()
+title_16 = 'Price per Sqft by Amenities'
+st.subheader(title_16)
+fig = px.box(data_frame=df,x='Amenities_Count',y='Price_per_SqFt',color='Amenities_Count',color_discrete_sequence=px.colors.qualitative.Set2)
+fig.update_layout(
+    title_text=title_16, # title of plot
+    xaxis_title_text='Amenities_Count', # xaxis label
+    yaxis_title_text='Price_per_SqFt', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_16')
+
+
+st.divider()
+title_17 = 'Price by Parking Availability'
+st.subheader(title_17)
+fig = px.box(data_frame=df,x='Parking_Space',y='Price_in_Lakhs',color='Parking_Space',color_discrete_sequence=px.colors.qualitative.Set2)
+fig.update_layout(
+    title_text=title_17, # title of plot
+    xaxis_title_text='Parking_Space', # xaxis label
+    yaxis_title_text='Price_in_Lakhs', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_17')
+
+
