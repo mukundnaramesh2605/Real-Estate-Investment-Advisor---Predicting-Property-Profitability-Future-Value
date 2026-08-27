@@ -4,7 +4,7 @@ A Streamlit app that explores the Indian residential real-estate market and pred
 
 The app is built on top of a housing-price dataset that has been enriched with engineered target columns (`Future_Price_5Y`, `Good_Investment`), and ships with a regression model and a classification model trained on that data.
 
-**Live source:** https://github.com/mukundnaramesh2605/Real-Estate-Investment-Advisor---Predicting-Property-Profitability-Future-Value
+**Live source:** https://real-estate-investment-advisor-26.streamlit.app/
 
 ## Features
 

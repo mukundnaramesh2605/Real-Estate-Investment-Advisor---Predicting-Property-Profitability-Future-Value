@@ -67,3 +67,4 @@ if st.button("Predict"):
     contrib = explain_prediction(clf_model, clf_row)
     st.pyplot(plot_explanation(contrib))
     st.write(explain_in_words(contrib, good_prob))
+print([c for c in reader.get_cities() if "Delhi" in c])

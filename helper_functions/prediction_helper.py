@@ -23,6 +23,8 @@ def encode(raw, x_reg_cols, x_clf_cols):
     d["Security"] = {"No":0, "Yes":1}[d["Security"]]
 
     row = pd.DataFrame([d])
+    row["City"] = row["City"].str.replace(" ", "_")
+    row["Property_Type"] = row["Property_Type"].str.replace(" ", "_")
     row = pd.get_dummies(row, columns=["City", "Property_Type"], dtype=int)
 
     reg_row = row.reindex(columns=x_reg_cols, fill_value=0)
