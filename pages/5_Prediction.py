@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from helper_functions.dataset_reader import dataset_reader
 from helper_functions.prediction_helper import load_artifacts,encode
+from helper_functions.prediction_helper import explain_prediction, plot_explanation,explain_in_words
 st.set_page_config(page_title="Predictions", page_icon="💻", layout="wide")
 
 st.title("💻 Predictions")
@@ -60,3 +61,9 @@ if st.button("Predict"):
     with col_b:
         st.write(f"**Investment Verdict:** {verdict}")
         st.caption(f"Model confidence: {good_prob*100:.0f}%  (threshold 50%)")
+
+
+    st.subheader("Why this verdict?")
+    contrib = explain_prediction(clf_model, clf_row)
+    st.pyplot(plot_explanation(contrib))
+    st.write(explain_in_words(contrib, good_prob))
