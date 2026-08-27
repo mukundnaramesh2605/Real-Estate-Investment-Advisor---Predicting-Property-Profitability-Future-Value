@@ -213,3 +213,19 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_14')
 
 
+st.divider()
+title_15 = 'Property Count by Availability Status'
+st.subheader(title_15)
+availability_counts = df['Availability_Status'].value_counts().reset_index()
+availability_counts.columns = ['Availability_Status', 'Count']
+fig = px.bar(data_frame=availability_counts,x='Availability_Status',y='Count',color='Availability_Status',text='Count')
+fig.update_traces(textposition='outside')
+fig.update_layout(
+    title_text=title_15, # title of plot
+    xaxis_title_text='Availability Status', # xaxis label
+    yaxis_title_text='Count', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_15')
+
+
