@@ -255,3 +255,16 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_17')
 
 
+st.divider()
+title_18 = 'Price per Sqft by Public Transport Accessibility'
+st.subheader(title_18)
+fig = px.box(data_frame=df,x='Public_Transport_Accessibility',y='Price_per_SqFt',color='Public_Transport_Accessibility',color_discrete_sequence=px.colors.qualitative.Set2)
+fig.update_layout(
+    title_text=title_18, # title of plot
+    xaxis_title_text='Public_Transport_Accessibility', # xaxis label
+    yaxis_title_text='Price_per_SqFt', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_18')
+
+
