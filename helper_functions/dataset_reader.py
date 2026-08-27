@@ -20,16 +20,16 @@ class dataset_reader:
 
     def get_property_type(self):
         property_types = sorted(self.df['Property_Type'].unique().tolist())
-        return property_types.tolist().sort()
+        return property_types
 
     def get_facing(self):
         facing = sorted(self.df['Facing'].unique().tolist())
-        return facing.tolist().sort()
+        return facing
 
     def get_owner_type(self):
         owner_type = sorted(self.df['Owner_Type'].unique().tolist())
-        return owner_type.tolist().sort()
+        return owner_type
 
     def get_avaialble_status(self):
         available_status = sorted(self.df['Availability_Status'].unique().tolist())
-        return available_status.tolist().sort()
+        return available_status
