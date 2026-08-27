@@ -184,3 +184,16 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_12')
 
 
+st.divider()
+title_13 = 'Price per sqft by Facing Direction'
+st.subheader(title_13)
+fig = px.box(data_frame=df,x='Facing',y='Price_per_SqFt',color='Facing',color_discrete_sequence=px.colors.sequential.Blues)
+fig.update_layout(
+    title_text=title_13, # title of plot
+    xaxis_title_text='Facing Direction', # xaxis label
+    yaxis_title_text='Price per SqFt', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_13')
+
+
