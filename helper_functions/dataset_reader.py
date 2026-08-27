@@ -31,5 +31,5 @@ class dataset_reader:
         return owner_type.tolist()
 
     def get_avaialble_status(self):
-        available_status = self.f['Availability_Status'].unique()
+        available_status = self.df['Availability_Status'].unique()
         return available_status.tolist()
