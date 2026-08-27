@@ -197,3 +197,20 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_13')
 
 
+st.divider()
+title_14 = 'Property Count by Owner Type'
+st.subheader(title_14)
+owner_counts = df['Owner_Type'].value_counts().reset_index()
+owner_counts.columns = ['Owner_Type', 'Count']
+st.dataframe(owner_counts, hide_index=True)
+fig = px.bar(data_frame=owner_counts,x='Owner_Type',y='Count',color='Owner_Type',text='Count')
+fig.update_traces(textposition='outside')
+fig.update_layout(
+    title_text=title_14, # title of plot
+    xaxis_title_text='Owner Type', # xaxis label
+    yaxis_title_text='Count', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_14')
+
+
