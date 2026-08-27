@@ -158,3 +158,16 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_10')
 
 
+st.divider()
+title_11 = 'Price per SqFt by Number of Nearby Hospitals'
+st.subheader(title_11)
+fig = px.box(data_frame=df,x='Nearby_Hospitals',y='Price_per_SqFt',color='Nearby_Hospitals',color_discrete_sequence=px.colors.sequential.Viridis)
+fig.update_layout(
+    title_text=title_11, # title of plot
+    xaxis_title_text='Number of Nearby Hospitals', # xaxis label
+    yaxis_title_text='Price per SqFt', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_11')
+
+
