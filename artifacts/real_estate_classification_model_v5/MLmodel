@@ -1,4 +1,4 @@
-artifact_path: mlflow-artifacts:/5/models/m-127ca49350bd41be9c976797bebc0a22/artifacts
+artifact_path: mlflow-artifacts:/5/models/m-a4f44e28464a4e6888ec73c409b5ae20/artifacts
 flavors:
   python_function:
     env:
@@ -23,11 +23,11 @@ flavors:
     - collections.OrderedDict
 is_signature_from_type_hint: false
 mlflow_version: 3.15.1
-model_id: m-127ca49350bd41be9c976797bebc0a22
-model_size_bytes: 455139
-model_uuid: m-127ca49350bd41be9c976797bebc0a22
+model_id: m-a4f44e28464a4e6888ec73c409b5ae20
+model_size_bytes: 865760
+model_uuid: m-a4f44e28464a4e6888ec73c409b5ae20
 prompts: null
-run_id: 7678f89d91d843e293afdd32b708a805
+run_id: 4b8b1f19ead945de8e2c3d087362e8bd
 signature:
   inputs: '[{"type": "long", "name": "Size_in_SqFt", "required": true}, {"type": "double",
     "name": "Price_in_Lakhs", "required": true}, {"type": "long", "name": "Floor_No",
@@ -69,16 +69,8 @@ signature:
     "City_Vishakhapatnam", "required": true}, {"type": "long", "name": "City_Warangal",
     "required": true}, {"type": "long", "name": "Property_Type_Apartment", "required":
     true}, {"type": "long", "name": "Property_Type_Independent_House", "required":
-    true}, {"type": "long", "name": "Property_Type_Villa", "required": true}, {"type":
-    "long", "name": "Facing_East", "required": true}, {"type": "long", "name": "Facing_North",
-    "required": true}, {"type": "long", "name": "Facing_South", "required": true},
-    {"type": "long", "name": "Facing_West", "required": true}, {"type": "long", "name":
-    "Furnished_Status_Furnished", "required": true}, {"type": "long", "name": "Furnished_Status_Semi_Furnished",
-    "required": true}, {"type": "long", "name": "Furnished_Status_Unfurnished", "required":
-    true}, {"type": "long", "name": "Owner_Type_Broker", "required": true}, {"type":
-    "long", "name": "Owner_Type_Builder", "required": true}, {"type": "long", "name":
-    "Owner_Type_Owner", "required": true}]'
+    true}, {"type": "long", "name": "Property_Type_Villa", "required": true}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-08-27 11:48:36.705376'
+utc_time_created: '2026-08-27 12:09:02.961706'
