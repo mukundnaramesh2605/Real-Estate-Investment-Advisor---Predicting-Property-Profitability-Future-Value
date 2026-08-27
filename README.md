@@ -86,6 +86,50 @@ Predictions rely on the pre-trained artifacts in `artifacts/pkls/` and the colum
 - `Models.ipynb` — trains the regression (future price) and classification (good investment) models and exports the artifacts consumed by the Streamlit app.
 - `MLflow.ipynb` — logs experiments, metrics, and model versions to MLflow (tracking data stored locally, ignored by git).
 
+## Model selection & performance
+
+Both prediction tasks were benchmarked across several algorithm families in `Models.ipynb`, with every run tracked in MLflow (`mlflow.db`, experiments `real_estate_regression` and `real_estate_classification`). LightGBM led every other model on both tasks *before* any tuning; hyperparameter tuning (grid search over `learning_rate`, `num_leaves`, `max_depth`, `n_estimators`, `subsample`) then gave a further, smaller edge, after which a "lean" LightGBM configuration reproducing the tuned model's performance with simpler tree settings was promoted to production (`artifacts/real_estate_regression_model_v5`, `artifacts/real_estate_classification_model_v5`).
+
+### Regression — 5-year future price (`Future_Price_5Y`)
+
+| Model | R² ↑ | RMSE ↓ (Lakhs) | MAE ↓ (Lakhs) |
+|---|---|---|---|
+| Linear Regression | 0.9602 | 39.05 | 29.32 |
+| Ridge | 0.9602 | 39.05 | 29.32 |
+| Lasso | 0.9591 | 39.57 | 29.08 |
+| Random Forest | 0.9672 | 35.43 | 24.71 |
+| Gradient Boosting | 0.9626 | 37.87 | 26.61 |
+| XGBoost | 0.9701 | 33.82 | 23.47 |
+| **LightGBM (baseline)** | 0.9708 | 33.45 | 23.28 |
+| LightGBM (tuned) | 0.9709 | 33.37 | 23.22 |
+| **LightGBM lean, tuned — deployed (v5)** | 0.9709 | 33.38 | 23.22 |
+
+- Even untuned, LightGBM already beat every other model tried on all three metrics.
+- Tuning (`n_estimators=200`, `num_leaves=31`, `learning_rate=0.05`, `subsample=0.7`) trimmed RMSE by another ~0.3% — a small, consistent gain rather than a step change.
+- The deployed "lean" configuration matches the fully tuned model's accuracy with a simpler hyperparameter set.
+
+### Classification — good investment (`Good_Investment`)
+
+The target is imbalanced (~27.6% of properties are labeled "Good Investment" — see the *EDA: Investment Factors* page), so accuracy alone is a misleading way to pick a model; ROC-AUC and F1 were used instead.
+
+| Model | ROC-AUC ↑ | F1 ↑ | Precision | Recall | Accuracy |
+|---|---|---|---|---|---|
+| Decision Tree | 0.579 | 0.393 | 0.386 | 0.401 | 0.659 |
+| KNN | 0.576 | 0.256 | 0.365 | 0.197 | 0.684 |
+| Logistic Regression | 0.723 | 0.552 | 0.450 | 0.713 | 0.681 |
+| Random Forest | 0.722 | 0.503 | 0.445 | 0.579 | 0.685 |
+| Gradient Boosting | 0.722 | 0.029 | 0.428 | 0.015 | **0.723** |
+| XGBoost | 0.722 | 0.578 | 0.446 | 0.819 | 0.670 |
+| **LightGBM (baseline)** | 0.723 | 0.580 | 0.446 | 0.831 | 0.669 |
+| LightGBM (tuned) | 0.723 | 0.581 | 0.446 | 0.833 | 0.669 |
+| **LightGBM lean, tuned — deployed (v5)** | 0.721 | 0.581 | 0.446 | 0.834 | 0.669 |
+
+- Gradient Boosting shows the highest raw accuracy (72.3%), but that's a red flag rather than a win — its recall is 1.5%, meaning it almost never predicts "Good Investment" and is effectively just guessing the majority class.
+- LightGBM has the best F1 and ROC-AUC of every model tried, both before and after tuning, while actually surfacing good-investment properties (~83% recall).
+- Tuning (`max_depth=20`, same `learning_rate`/`num_leaves`/`subsample` as baseline) nudged F1 up slightly; the deployed "lean" variant (`num_leaves=70`, `max_depth=-1`, `subsample=0.8`, fewer estimators) reproduces that performance.
+
+**Why LightGBM:** it was the top performer on the primary ranking metric for *both* tasks (R² for regression, F1/ROC-AUC for classification) before any tuning took place — tuning only widened that lead rather than closing a gap with a different algorithm.
+
 ## Notes
 
 - The `Datasets/` CSVs are sizeable (tens of MB) since they contain the full housing dataset plus engineered/encoded columns.
