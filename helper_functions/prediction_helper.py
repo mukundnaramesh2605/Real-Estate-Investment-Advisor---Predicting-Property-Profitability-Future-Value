@@ -56,14 +56,14 @@ def explain_prediction(clf_model, clf_row, top_n=8):
 
     # normalise to a 1D array of per-feature contributions for class 1
     arr = np.array(raw)
-    if arr.ndim == 3:            # shape (1, n_features, 2) -> class 1
+    if arr.ndim == 3:
         vals = arr[0, :, 1]
-    elif isinstance(raw, list):  # list [class0, class1]
+    elif isinstance(raw, list):
         vals = np.array(raw[1])[0]
-    else:                        # shape (1, n_features)
+    else:
         vals = arr[0]
 
-        contrib = pd.DataFrame({
+    contrib = pd.DataFrame({          # ← dedented, aligns with if/elif/else
         "feature": clf_row.columns,
         "shap": vals,
         "value": clf_row.iloc[0].values,
