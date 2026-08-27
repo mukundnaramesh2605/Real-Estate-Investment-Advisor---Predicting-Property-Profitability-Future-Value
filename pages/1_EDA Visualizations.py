@@ -171,3 +171,16 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_11')
 
 
+st.divider()
+title_12 = 'Price by Furnished Status'
+st.subheader(title_12)
+fig = px.box(data_frame=df,x='Furnished_Status',y='Price_in_Lakhs',color='Furnished_Status',color_discrete_sequence=px.colors.qualitative.Set2)
+fig.update_layout(
+    title_text=title_12, # title of plot
+    xaxis_title_text='Furnished Status', # xaxis label
+    yaxis_title_text='Price (Lakhs)', # yaxis label
+    showlegend=False,
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_12')
+
+
