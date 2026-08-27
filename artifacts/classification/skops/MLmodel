@@ -1,82 +1,84 @@
-artifact_path: mlflow-artifacts:/5/models/m-7b17d78a93134661b7f97b54e1b7bee2/artifacts
+artifact_path: mlflow-artifacts:/5/models/m-386b151ff26d44b5a6d5d7e0d9fd499a/artifacts
 flavors:
-  lightgbm:
-    code: null
-    data: model.skops
-    lgb_version: 4.7.0
-    model_class: lightgbm.sklearn.LGBMClassifier
-    serialization_format: skops
-    skops_trusted_types:
-    - lightgbm.basic.Booster
-    - lightgbm.sklearn.LGBMClassifier
-    - lightgbm.sklearn.LGBMRegressor
-    - collections.OrderedDict
   python_function:
-    data: model.skops
     env:
       conda: conda.yaml
       virtualenv: python_env.yaml
-    loader_module: mlflow.lightgbm
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
     python_version: 3.11.15
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types:
+    - xgboost.core.Booster
+    - xgboost.sklearn.XGBRegressor
+    - xgboost.sklearn.XGBClassifier
+    - lightgbm.basic.Booster
+    - lightgbm.sklearn.LGBMRegressor
+    - lightgbm.sklearn.LGBMClassifier
+    - collections.OrderedDict
 is_signature_from_type_hint: false
 mlflow_version: 3.15.1
-model_id: m-7b17d78a93134661b7f97b54e1b7bee2
-model_size_bytes: 819096
-model_uuid: m-7b17d78a93134661b7f97b54e1b7bee2
+model_id: m-386b151ff26d44b5a6d5d7e0d9fd499a
+model_size_bytes: 455139
+model_uuid: m-386b151ff26d44b5a6d5d7e0d9fd499a
 prompts: null
-run_id: a671ac7edee942c7a25c7be1c4a87e0e
+run_id: 316bf90d71f94f6bbc5456e6abaa0cf6
 signature:
-  inputs: '[{"type": "double", "name": "Size_in_SqFt", "required": true}, {"type":
-    "double", "name": "Price_in_Lakhs", "required": true}, {"type": "double", "name":
-    "Floor_No", "required": true}, {"type": "double", "name": "Total_Floors", "required":
-    true}, {"type": "double", "name": "Age_of_Property", "required": true}, {"type":
-    "double", "name": "Nearby_Schools", "required": true}, {"type": "double", "name":
-    "Nearby_Hospitals", "required": true}, {"type": "double", "name": "Public_Transport_Accessibility",
-    "required": true}, {"type": "double", "name": "Security", "required": true}, {"type":
-    "double", "name": "City_Ahmedabad", "required": true}, {"type": "double", "name":
-    "City_Amritsar", "required": true}, {"type": "double", "name": "City_Bangalore",
-    "required": true}, {"type": "double", "name": "City_Bhopal", "required": true},
-    {"type": "double", "name": "City_Bhubaneswar", "required": true}, {"type": "double",
-    "name": "City_Bilaspur", "required": true}, {"type": "double", "name": "City_Chennai",
-    "required": true}, {"type": "double", "name": "City_Coimbatore", "required": true},
-    {"type": "double", "name": "City_Cuttack", "required": true}, {"type": "double",
-    "name": "City_Dehradun", "required": true}, {"type": "double", "name": "City_Durgapur",
-    "required": true}, {"type": "double", "name": "City_Dwarka", "required": true},
-    {"type": "double", "name": "City_Faridabad", "required": true}, {"type": "double",
-    "name": "City_Gaya", "required": true}, {"type": "double", "name": "City_Gurgaon",
-    "required": true}, {"type": "double", "name": "City_Guwahati", "required": true},
-    {"type": "double", "name": "City_Haridwar", "required": true}, {"type": "double",
-    "name": "City_Hyderabad", "required": true}, {"type": "double", "name": "City_Indore",
-    "required": true}, {"type": "double", "name": "City_Jaipur", "required": true},
-    {"type": "double", "name": "City_Jamshedpur", "required": true}, {"type": "double",
-    "name": "City_Jodhpur", "required": true}, {"type": "double", "name": "City_Kochi",
-    "required": true}, {"type": "double", "name": "City_Kolkata", "required": true},
-    {"type": "double", "name": "City_Lucknow", "required": true}, {"type": "double",
-    "name": "City_Ludhiana", "required": true}, {"type": "double", "name": "City_Mangalore",
-    "required": true}, {"type": "double", "name": "City_Mumbai", "required": true},
-    {"type": "double", "name": "City_Mysore", "required": true}, {"type": "double",
-    "name": "City_Nagpur", "required": true}, {"type": "double", "name": "City_New_Delhi",
-    "required": true}, {"type": "double", "name": "City_Noida", "required": true},
-    {"type": "double", "name": "City_Patna", "required": true}, {"type": "double",
-    "name": "City_Pune", "required": true}, {"type": "double", "name": "City_Raipur",
-    "required": true}, {"type": "double", "name": "City_Ranchi", "required": true},
-    {"type": "double", "name": "City_Silchar", "required": true}, {"type": "double",
-    "name": "City_Surat", "required": true}, {"type": "double", "name": "City_Trivandrum",
-    "required": true}, {"type": "double", "name": "City_Vijayawada", "required": true},
-    {"type": "double", "name": "City_Vishakhapatnam", "required": true}, {"type":
-    "double", "name": "City_Warangal", "required": true}, {"type": "double", "name":
-    "Property_Type_Apartment", "required": true}, {"type": "double", "name": "Property_Type_Independent_House",
-    "required": true}, {"type": "double", "name": "Property_Type_Villa", "required":
-    true}, {"type": "double", "name": "Facing_East", "required": true}, {"type": "double",
-    "name": "Facing_North", "required": true}, {"type": "double", "name": "Facing_South",
-    "required": true}, {"type": "double", "name": "Facing_West", "required": true},
-    {"type": "double", "name": "Furnished_Status_Furnished", "required": true}, {"type":
-    "double", "name": "Furnished_Status_Semi_Furnished", "required": true}, {"type":
-    "double", "name": "Furnished_Status_Unfurnished", "required": true}, {"type":
-    "double", "name": "Owner_Type_Broker", "required": true}, {"type": "double", "name":
-    "Owner_Type_Builder", "required": true}, {"type": "double", "name": "Owner_Type_Owner",
-    "required": true}]'
+  inputs: '[{"type": "long", "name": "Size_in_SqFt", "required": true}, {"type": "double",
+    "name": "Price_in_Lakhs", "required": true}, {"type": "long", "name": "Floor_No",
+    "required": true}, {"type": "long", "name": "Total_Floors", "required": true},
+    {"type": "long", "name": "Age_of_Property", "required": true}, {"type": "long",
+    "name": "Nearby_Schools", "required": true}, {"type": "long", "name": "Nearby_Hospitals",
+    "required": true}, {"type": "long", "name": "Public_Transport_Accessibility",
+    "required": true}, {"type": "long", "name": "Security", "required": true}, {"type":
+    "long", "name": "City_Ahmedabad", "required": true}, {"type": "long", "name":
+    "City_Amritsar", "required": true}, {"type": "long", "name": "City_Bangalore",
+    "required": true}, {"type": "long", "name": "City_Bhopal", "required": true},
+    {"type": "long", "name": "City_Bhubaneswar", "required": true}, {"type": "long",
+    "name": "City_Bilaspur", "required": true}, {"type": "long", "name": "City_Chennai",
+    "required": true}, {"type": "long", "name": "City_Coimbatore", "required": true},
+    {"type": "long", "name": "City_Cuttack", "required": true}, {"type": "long", "name":
+    "City_Dehradun", "required": true}, {"type": "long", "name": "City_Durgapur",
+    "required": true}, {"type": "long", "name": "City_Dwarka", "required": true},
+    {"type": "long", "name": "City_Faridabad", "required": true}, {"type": "long",
+    "name": "City_Gaya", "required": true}, {"type": "long", "name": "City_Gurgaon",
+    "required": true}, {"type": "long", "name": "City_Guwahati", "required": true},
+    {"type": "long", "name": "City_Haridwar", "required": true}, {"type": "long",
+    "name": "City_Hyderabad", "required": true}, {"type": "long", "name": "City_Indore",
+    "required": true}, {"type": "long", "name": "City_Jaipur", "required": true},
+    {"type": "long", "name": "City_Jamshedpur", "required": true}, {"type": "long",
+    "name": "City_Jodhpur", "required": true}, {"type": "long", "name": "City_Kochi",
+    "required": true}, {"type": "long", "name": "City_Kolkata", "required": true},
+    {"type": "long", "name": "City_Lucknow", "required": true}, {"type": "long", "name":
+    "City_Ludhiana", "required": true}, {"type": "long", "name": "City_Mangalore",
+    "required": true}, {"type": "long", "name": "City_Mumbai", "required": true},
+    {"type": "long", "name": "City_Mysore", "required": true}, {"type": "long", "name":
+    "City_Nagpur", "required": true}, {"type": "long", "name": "City_New_Delhi", "required":
+    true}, {"type": "long", "name": "City_Noida", "required": true}, {"type": "long",
+    "name": "City_Patna", "required": true}, {"type": "long", "name": "City_Pune",
+    "required": true}, {"type": "long", "name": "City_Raipur", "required": true},
+    {"type": "long", "name": "City_Ranchi", "required": true}, {"type": "long", "name":
+    "City_Silchar", "required": true}, {"type": "long", "name": "City_Surat", "required":
+    true}, {"type": "long", "name": "City_Trivandrum", "required": true}, {"type":
+    "long", "name": "City_Vijayawada", "required": true}, {"type": "long", "name":
+    "City_Vishakhapatnam", "required": true}, {"type": "long", "name": "City_Warangal",
+    "required": true}, {"type": "long", "name": "Property_Type_Apartment", "required":
+    true}, {"type": "long", "name": "Property_Type_Independent_House", "required":
+    true}, {"type": "long", "name": "Property_Type_Villa", "required": true}, {"type":
+    "long", "name": "Facing_East", "required": true}, {"type": "long", "name": "Facing_North",
+    "required": true}, {"type": "long", "name": "Facing_South", "required": true},
+    {"type": "long", "name": "Facing_West", "required": true}, {"type": "long", "name":
+    "Furnished_Status_Furnished", "required": true}, {"type": "long", "name": "Furnished_Status_Semi_Furnished",
+    "required": true}, {"type": "long", "name": "Furnished_Status_Unfurnished", "required":
+    true}, {"type": "long", "name": "Owner_Type_Broker", "required": true}, {"type":
+    "long", "name": "Owner_Type_Builder", "required": true}, {"type": "long", "name":
+    "Owner_Type_Owner", "required": true}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-08-26 09:40:15.921687'
+utc_time_created: '2026-08-27 09:11:46.239739'
