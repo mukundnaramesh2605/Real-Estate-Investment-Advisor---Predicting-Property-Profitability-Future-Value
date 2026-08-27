@@ -268,3 +268,62 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True, key='chart_18')
 
 
+st.divider()
+title_19 = 'Correlation of Numerical Features with Future_Price_5Y'
+st.subheader(title_19)
+target_corr = df.corr(numeric_only=True)['Future_Price_5Y'].drop(['Future_Price_5Y', 'Good_Investment']).sort_values().reset_index()
+target_corr.columns = ['Feature', 'Correlation']
+fig = px.bar(data_frame=target_corr,x='Correlation',y='Feature',orientation='h',color='Correlation',color_continuous_scale='RdBu_r')
+fig.add_vline(x=0, line_dash='dash', line_color='gray')
+fig.update_layout(
+    title_text=title_19, # title of plot
+    xaxis_title_text='Correlation Coefficient (r)', # xaxis label
+    yaxis_title_text='Features', # yaxis label
+)
+st.plotly_chart(fig, use_container_width=True, key='chart_19')
+
+
+st.divider()
+title_20 = '% Good Investment by Key Factors'
+st.subheader(title_20)
+row1_col1, row1_col2 = st.columns(2)
+row2_col1, row2_col2 = st.columns(2)
+
+with row1_col1:
+    bhk_rate = (df.groupby('BHK')['Good_Investment'].mean() * 100).reset_index(name='Pct_Good')
+    fig = px.bar(data_frame=bhk_rate,x='BHK',y='Pct_Good',color_discrete_sequence=['steelblue'])
+    fig.add_hline(y=27.6, line_dash='dash', line_color='red', line_width=1, annotation_text='overall 27.6%', annotation_position='top left')
+    fig.update_layout(
+        title_text='% Good Investment by BHK', # title of plot
+        yaxis_title_text='% Good', # yaxis label
+    )
+    st.plotly_chart(fig, use_container_width=True, key='chart_20a')
+
+with row1_col2:
+    avail_rate = (df.groupby('Availability_Status')['Good_Investment'].mean() * 100).reset_index(name='Pct_Good')
+    fig = px.bar(data_frame=avail_rate,x='Availability_Status',y='Pct_Good',color_discrete_sequence=['seagreen'])
+    fig.update_layout(
+        title_text='% Good Investment by Availability', # title of plot
+        yaxis_title_text='% Good', # yaxis label
+    )
+    st.plotly_chart(fig, use_container_width=True, key='chart_20b')
+
+with row2_col1:
+    park_rate = (df.groupby('Parking_Space')['Good_Investment'].mean() * 100).reset_index(name='Pct_Good')
+    fig = px.bar(data_frame=park_rate,x='Parking_Space',y='Pct_Good',color_discrete_sequence=['darkorange'])
+    fig.update_layout(
+        title_text='% Good Investment by Parking', # title of plot
+        yaxis_title_text='% Good', # yaxis label
+    )
+    st.plotly_chart(fig, use_container_width=True, key='chart_20c')
+
+with row2_col2:
+    amen_rate = (df.groupby('Amenities_Count')['Good_Investment'].mean() * 100).reset_index(name='Pct_Good')
+    fig = px.bar(data_frame=amen_rate,x='Amenities_Count',y='Pct_Good',color_discrete_sequence=['mediumpurple'])
+    fig.update_layout(
+        title_text='% Good Investment by Amenities Count', # title of plot
+        yaxis_title_text='% Good', # yaxis label
+    )
+    st.plotly_chart(fig, use_container_width=True, key='chart_20d')
+
+
