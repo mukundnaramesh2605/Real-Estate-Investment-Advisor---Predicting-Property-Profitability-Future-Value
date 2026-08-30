@@ -97,7 +97,12 @@ Both prediction targets are engineered in `EDA.ipynb` from the raw listing colum
 
 ## Model selection & performance
 
-Both prediction tasks were benchmarked across several algorithm families in `Models.ipynb`, with every run tracked in MLflow (`mlflow.db`, experiments `real_estate_regression` and `real_estate_classification`). LightGBM led every other model on both tasks *before* any tuning; hyperparameter tuning (grid search over `learning_rate`, `num_leaves`, `max_depth`, `n_estimators`, `subsample`) then gave a further, smaller edge, after which a "lean" LightGBM configuration reproducing the tuned model's performance with simpler tree settings was promoted to production (`artifacts/real_estate_regression_model_v5`, `artifacts/real_estate_classification_model_v5`).
+Both prediction tasks were benchmarked across several algorithm families in `Models.ipynb`:
+
+- **Regression** (`Future_Price_5Y`): Linear Regression, Ridge, Lasso, Random Forest, Gradient Boosting, XGBoost, LightGBM.
+- **Classification** (`Good_Investment`): Decision Tree, KNN, Logistic Regression, Random Forest, Gradient Boosting, XGBoost, LightGBM.
+
+Every run was tracked in MLflow (`mlflow.db`, experiments `real_estate_regression` and `real_estate_classification`). LightGBM led every other model on both tasks *before* any tuning; hyperparameter tuning (grid search over `learning_rate`, `num_leaves`, `max_depth`, `n_estimators`, `subsample`) then gave a further, smaller edge, after which a "lean" LightGBM configuration reproducing the tuned model's performance with simpler tree settings was promoted to production (`artifacts/real_estate_regression_model_v5`, `artifacts/real_estate_classification_model_v5`).
 
 ### Regression — 5-year future price (`Future_Price_5Y`)
 

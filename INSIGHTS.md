@@ -156,6 +156,13 @@ together internally.
 
 ## 6. Modeling results
 
+Algorithms benchmarked in `Models.ipynb`:
+
+- **Regression** (`Future_Price_5Y`): Linear Regression, Ridge, Lasso, Random
+  Forest, Gradient Boosting, XGBoost, LightGBM.
+- **Classification** (`Good_Investment`): Decision Tree, KNN, Logistic
+  Regression, Random Forest, Gradient Boosting, XGBoost, LightGBM.
+
 LightGBM wins both tasks before any tuning; tuning only widens the lead.
 Deployed as `real_estate_regression_model_v5` /
 `real_estate_classification_model_v5`.
