@@ -21,13 +21,6 @@ categorical breakdowns, and investment-factor analysis.
 | Model training, selection & MLflow logging | `Models.ipynb` → `mlflow.db`, `mlartifacts/` |
 | Serving | `Home.py` + `pages/` (Streamlit) |
 
-Note: `MLflow.ipynb` is **not** part of this pipeline — it's a leftover scratch
-notebook (an Iris toy example and unrelated pasted-in cells), gitignored, and
-never executed as part of the project. All real MLflow tracking — `log_param`,
-`log_metrics`, `mlflow.sklearn.log_model`, the tuning runs — is called from
-inside `Models.ipynb`, which is what actually populates `mlflow.db` and
-`mlartifacts/`.
-
 ## 2. Dataset anatomy
 
 **250,000 rows × 26 columns** (76 after one-hot encoding), covering **20
