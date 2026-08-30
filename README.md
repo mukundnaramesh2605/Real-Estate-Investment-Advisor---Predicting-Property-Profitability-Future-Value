@@ -37,8 +37,7 @@ The app is a multi-page Streamlit application:
 │   └── real_estate_*_model_v5/    # MLflow model artifacts (conda.yaml, requirements.txt, etc.)
 ├── Datasets/                      # Source and processed CSV datasets
 ├── EDA.ipynb                      # Exploratory data analysis notebook
-├── Models.ipynb                   # Model training/evaluation notebook
-├── MLflow.ipynb                   # MLflow experiment tracking notebook
+├── Models.ipynb                   # Model training/evaluation notebook, also logs runs to MLflow
 └── requirements.txt                # Python dependencies to run the Streamlit app
 ```
 
@@ -83,8 +82,7 @@ Predictions rely on the pre-trained artifacts in `artifacts/pkls/` and the colum
 ## Data & modeling notebooks
 
 - `EDA.ipynb` — initial data exploration and feature engineering used to build the enriched datasets in `Datasets/`.
-- `Models.ipynb` — trains the regression (future price) and classification (good investment) models and exports the artifacts consumed by the Streamlit app.
-- `MLflow.ipynb` — logs experiments, metrics, and model versions to MLflow (tracking data stored locally, ignored by git).
+- `Models.ipynb` — trains the regression (future price) and classification (good investment) models, exports the artifacts consumed by the Streamlit app, and logs every run's params/metrics/model to MLflow (tracking data stored locally in `mlflow.db`/`mlartifacts/`, ignored by git).
 
 ## Model selection & performance
 
