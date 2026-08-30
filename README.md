@@ -84,6 +84,17 @@ Predictions rely on the pre-trained artifacts in `artifacts/pkls/` and the colum
 - `EDA.ipynb` — initial data exploration and feature engineering used to build the enriched datasets in `Datasets/`.
 - `Models.ipynb` — trains the regression (future price) and classification (good investment) models, exports the artifacts consumed by the Streamlit app, and logs every run's params/metrics/model to MLflow (tracking data stored locally in `mlflow.db`/`mlartifacts/`, ignored by git).
 
+## How the target columns were built
+
+Both prediction targets are engineered in `EDA.ipynb` from the raw listing columns rather than being observed market outcomes — worth knowing before reading the model performance numbers below.
+
+- **`Future_Price_5Y`** — base = `Price_in_Lakhs × (1 + city_growth_rate)^5`, where the annual growth rate is adjusted by property-type and age effects, plus Gaussian noise, before compounding.
+- **`Good_Investment`** — a score out of 4, labeled "good" if it hits 3 or more:
+  - Price/sqft below the city median
+  - BHK ≥ 3
+  - Ready_to_Move
+  - Parking = Yes AND Amenities_Count ≥ 3
+
 ## Model selection & performance
 
 Both prediction tasks were benchmarked across several algorithm families in `Models.ipynb`, with every run tracked in MLflow (`mlflow.db`, experiments `real_estate_regression` and `real_estate_classification`). LightGBM led every other model on both tasks *before* any tuning; hyperparameter tuning (grid search over `learning_rate`, `num_leaves`, `max_depth`, `n_estimators`, `subsample`) then gave a further, smaller edge, after which a "lean" LightGBM configuration reproducing the tuned model's performance with simpler tree settings was promoted to production (`artifacts/real_estate_regression_model_v5`, `artifacts/real_estate_classification_model_v5`).

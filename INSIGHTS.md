@@ -70,6 +70,10 @@ formulas directly against the data.
 
 ### `Future_Price_5Y` (regression target)
 
+In plain terms: base = `Price_in_Lakhs × (1 + city_growth_rate)^5`, where the
+annual growth rate is adjusted by property-type and age effects, plus
+Gaussian noise, before compounding. Spelled out in full:
+
 ```
 growth_rate = city_tier_rate(City)          # 0.055 – 0.11, four city tiers
             + property_type_effect(Type)    # Villa +0.010, House +0.007, Apartment +0
@@ -85,6 +89,10 @@ Verified directly: for every sampled row,
 applied to a rate drawn mostly from which city a property is in.
 
 ### `Good_Investment` (classification target)
+
+In plain terms: a score out of 4, labeled "good" if it hits 3 or more —
+price/sqft below the city median, BHK ≥ 3, Ready_to_Move, and
+Parking = Yes AND Amenities_Count ≥ 3. Spelled out in full:
 
 ```
 score =  1  if Price_per_SqFt ≤ city median Price_per_SqFt
